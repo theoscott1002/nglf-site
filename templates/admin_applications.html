@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <div>
+        <h1>Applications</h1>
+        <p class="muted">All submitted applications (latest first).</p>
+      </div>
+
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a class="btn btn-outline" href="{{ url_for('admin_export_csv') }}">Export CSV</a>
+        <a class="btn btn-outline" href="{{ url_for('admin_logout') }}">Logout</a>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;">
+      {% if applications|length == 0 %}
+        <div class="card">No applications yet.</div>
+      {% else %}
+        {% for a in applications %}
+          <div class="card" style="margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+              <div style="font-weight:800;">{{ a["full_name"] }}</div>
+              <div class="muted small">{{ a["created_at"] }}</div>
+            </div>
+
+            <div class="muted small" style="margin-top:8px;">
+              <div><strong>Email:</strong> {{ a["email"] }}</div>
+              <div><strong>Phone:</strong> {{ a["phone"] }}</div>
+              <div><strong>City/State:</strong> {{ a["city"] or "-" }}</div>
+              <div><strong>French Level:</strong> {{ a["french_level"] or "-" }}</div>
+              <div><strong>University Status:</strong> {{ a["university_status"] or "-" }}</div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <strong>Motivation</strong>
+              <p class="muted" style="margin:6px 0 0;">{{ a["motivation"] }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title }} | NGLF</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="{{ url_for('home') }}">
+        <span class="brand-mark"></span>
+        <span class="brand-text">NGLF</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="{{ url_for('home') }}" class="{% if title=='Home' %}active{% endif %}">Home</a>
+        <a href="{{ url_for('about') }}" class="{% if title=='About' %}active{% endif %}">About</a>
+        <a href="{{ url_for('program') }}" class="{% if title=='Program' %}active{% endif %}">Program</a>
+        <a href="{{ url_for('community') }}" class="{% if title=='Community' %}active{% endif %}">Community</a>
+        <a href="{{ url_for('resources') }}" class="{% if title=='Resources' %}active{% endif %}">Resources</a>
+        <a href="{{ url_for('publications') }}" class="{% if title=='Publications' %}active{% endif %}">Publications</a>
+        <a href="{{ url_for('scholarships') }}" class="{% if title=='Scholarships & Awards' %}active{% endif %}">Scholarships & Awards</a>
+        <a class="btn btn-primary" href="{{ url_for('apply') }}">Apply</a>
+        <a class="btn btn-outline" href="{{ url_for('donate') }}">Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer">
+      <div>
+        <div class="footer-title">NGLF</div>
+        <p class="muted">Nigerian Girls and Ladies in French — mentorship, community, and opportunities through language.</p>
+      </div>
+
+      <div>
+        <div class="footer-title">Quick Links</div>
+        <a href="{{ url_for('about') }}">About</a><br>
+        <a href="{{ url_for('program') }}">Program</a><br>
+        <a href="{{ url_for('apply') }}">Apply</a><br>
+        <a href="{{ url_for('scholarships') }}">Scholarships & Awards</a>
+      </div>
+
+      <div>
+        <div class="footer-title">Contact</div>
+        <p class="muted">We’ll add official email/phone here.</p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom muted">
+      © {{ 2026 }} NGLF. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

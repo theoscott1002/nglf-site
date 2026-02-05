@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1>Apply</h1>
+    <p class="muted">Registration is on a rolling basis. Complete the form below to apply.</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div style="margin: 16px 0;">
+          {% for category, message in messages %}
+            <div class="alert {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post" class="form">
+      <div class="grid-2">
+        <div>
+          <label>Full Name *</label>
+          <input name="full_name" value="{{ form.get('full_name','') }}" required>
+        </div>
+
+        <div>
+          <label>Email *</label>
+          <input type="email" name="email" value="{{ form.get('email','') }}" required>
+        </div>
+
+        <div>
+          <label>Phone Number *</label>
+          <input name="phone" value="{{ form.get('phone','') }}" required>
+        </div>
+
+        <div>
+          <label>City/State</label>
+          <input name="city" value="{{ form.get('city','') }}">
+        </div>
+
+        <div>
+          <label>French Level</label>
+          <select name="french_level">
+            {% set lvl = form.get('french_level','') %}
+            <option value="" {% if lvl=='' %}selected{% endif %}>Select</option>
+            <option value="Beginner" {% if lvl=='Beginner' %}selected{% endif %}>Beginner</option>
+            <option value="Intermediate" {% if lvl=='Intermediate' %}selected{% endif %}>Intermediate</option>
+            <option value="Advanced" {% if lvl=='Advanced' %}selected{% endif %}>Advanced</option>
+          </select>
+        </div>
+
+        <div>
+          <label>University Status</label>
+          {% set us = form.get('university_status','') %}
+          <select name="university_status">
+            <option value="" {% if us=='' %}selected{% endif %}>Select</option>
+            <option value="Planning to apply" {% if us=='Planning to apply' %}selected{% endif %}>Planning to apply</option>
+            <option value="Applied" {% if us=='Applied' %}selected{% endif %}>Applied</option>
+            <option value="Admitted" {% if us=='Admitted' %}selected{% endif %}>Admitted</option>
+            <option value="Undergraduate" {% if us=='Undergraduate' %}selected{% endif %}>Undergraduate</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;">
+        <label>Why are you interested in NGLF? *</label>
+        <textarea name="motivation" rows="6" required>{{ form.get('motivation','') }}</textarea>
+      </div>
+
+      <div style="margin-top:16px;">
+        <button class="btn btn-primary" type="submit">Submit Application</button>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

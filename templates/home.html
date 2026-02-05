@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="kicker">Nigerian Girls and Ladies in French (NGLF)</p>
+      <h1>French Language Mentorship & Communication</h1>
+      <p class="lead">
+        Mentorship, community, and opportunities for Nigerian girls and young women through French language learning.
+      </p>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="{{ url_for('apply') }}">Apply Now</a>
+        <a class="btn btn-outline" href="{{ url_for('eligibility') if false else url_for('program') }}">View Program</a>
+      </div>
+
+      <p class="muted small">Registration is on a rolling basis.</p>
+    </div>
+
+    <div class="hero-card">
+      <div class="placeholder-img">Hero Image Placeholder</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Program Benefits</h2>
+    <div class="grid-3">
+      <div class="card">Collaborative Group Mentorship</div>
+      <div class="card">Peer-to-Peer Mentoring</div>
+      <div class="card">Networking Opportunities</div>
+      <div class="card">Language Practice & Development</div>
+      <div class="card">Scholarship & Funding Support</div>
+      <div class="card">Career Guidance & Job Support</div>
+    </div>
+  </div>
+</section>
+{% endblock %}
