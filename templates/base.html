@@ -10,8 +10,11 @@
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="{{ url_for('home') }}">
-        <span class="brand-mark"></span>
-        <span class="brand-text">NGLF</span>
+         <img
+           src="{{ url_for('static', filename='images/logo.jpeg') }}"
+           alt="NGLF logo"
+           class="brand-logo"
+          />
       </a>
 
       <nav class="nav-links" aria-label="Primary navigation">
